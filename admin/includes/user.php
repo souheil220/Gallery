@@ -17,18 +17,33 @@ class User
     {
         $result = self::find_this_query("SELECT * FROM users where id = $user_id");
 
-        return !empty($result)?array_shift($result):false;
+        return !empty($result) ? array_shift($result) : false;
     }
 
     public static function find_this_query($sql)
     {
         global $database;
+        $confirm = new self;
         $result = $database->query($sql);
+        $confirm->confirm_query($result);
         $the_object_array = array();
-        while($row = mysqli_fetch_array($result)){
+        while ($row = mysqli_fetch_array($result)) {
             $the_object_array[] = self::instantiation($row);
         }
         return $the_object_array;
+    }
+
+    public static function verify_user($username, $password)
+    {
+        global $database;
+        $username = $database->escape_string($username);
+        $password = $database->escape_string($password);
+
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password' LIMIT 1";
+
+        $result = self::find_this_query($sql);
+
+        return !empty($result) ? array_shift($result) : false;
     }
 
     public static function instantiation($row)
@@ -48,5 +63,12 @@ class User
     {
         $object_properties = get_object_vars($this);
         return array_key_exists($the_attribute, $object_properties);
+    }
+
+    private function confirm_query($result)
+    {
+        if (!$result) {
+            die("Query Failed " . $this->connection->error);
+        }
     }
 }

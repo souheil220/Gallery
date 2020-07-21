@@ -10,4 +10,10 @@ function classAutoLoader($class)
         die("The File {$class}.php was not found");
     }
 }
+
+function redirect($location)
+{
+    header('Location: ' . $location);
+}
+
 spl_autoload_register('classAutoLoader');
