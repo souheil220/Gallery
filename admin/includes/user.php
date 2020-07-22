@@ -23,9 +23,8 @@ class User
     public static function find_this_query($sql)
     {
         global $database;
-        $confirm = new self;
+       
         $result = $database->query($sql);
-        $confirm->confirm_query($result);
         $the_object_array = array();
         while ($row = mysqli_fetch_array($result)) {
             $the_object_array[] = self::instantiation($row);
@@ -65,13 +64,6 @@ class User
         return array_key_exists($the_attribute, $object_properties);
     }
 
-    private function confirm_query($result)
-    {
-        if (!$result) {
-            die("Query Failed " . $this->connection->error);
-        }
-    }
-
     public function create()
     {
         global $database;
@@ -82,9 +74,7 @@ class User
         $sql .= $database->escape_string($this->first_name) . "','";
         $sql .= $database->escape_string($this->last_name) . "')";
 
-        //    $confirm = new self;
-        //    $confirm->confirm_query($database->query($sql));
-
+       
         if ($database->query($sql)) {
             $this->id = $database->insert_id();
             return true;
@@ -97,16 +87,23 @@ class User
     {
         global $database;
         $sql = "UPDATE users SET ";
-        $sql .= "username = '".$database->escape_string($this->username) . "',";
-        $sql .= "password = '".$database->escape_string($this->password) . "',";
-        $sql .= "first_name = '".$database->escape_string($this->first_name) . "',";
-        $sql .= "last_name = '".$database->escape_string($this->last_name) . "' ";
-        $sql .= " WHERE id = ".$database->escape_string($this->id);
+        $sql .= "username = '" . $database->escape_string($this->username) . "',";
+        $sql .= "password = '" . $database->escape_string($this->password) . "',";
+        $sql .= "first_name = '" . $database->escape_string($this->first_name) . "',";
+        $sql .= "last_name = '" . $database->escape_string($this->last_name) . "' ";
+        $sql .= " WHERE id = " . $database->escape_string($this->id);
 
         $database->query($sql);
 
-        return $database->connection->affected_rows == 1 ? true : die("Error");
-
+        return $database->connection->affected_rows == 1 ? true : die("Error While updating");
     }
 
+    public function delete()
+    {
+        global $database;
+        $sql = "DELETE FROM users WHERE id = {$database->escape_string($this->id)}";
+        $database->query($sql);
+
+        return $database->connection->affected_rows == 1 ? true : die("Error While deleting");
+    }
 } //End user Class

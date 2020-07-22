@@ -15,14 +15,15 @@
             // $user->last_name = "Achour";
             
             // $user->create();
+            // $user= User::find_user_by_id(3);
+            // $user->username = "adel420";   
+            // $user->password = "123456";   
+            // $user->first_name = "adel";   
+            // $user->last_name = "achour";
+
+            // $user->update();
             $user= User::find_user_by_id(3);
-            $user->username = "adel420";   
-            $user->password = "123456";   
-            $user->first_name = "adel";   
-            $user->last_name = "achour";
-
-            $user->update();
-
+            $user->delete();
 
 
         ?>
