@@ -4,7 +4,6 @@ require_once("new_config.php");
 
 class Database
 {
-
     public $connection;
 
     function __construct()
@@ -36,15 +35,18 @@ class Database
         }
     }
 
-    public function escape_string($string){
+    public function escape_string($string)
+    {
       $escaped_string =  $this->connection->real_escape_string($string);
 
       return $escaped_string;
     }
 
-    public function insert_id(){
+    public function insert_id()
+    {
         return $this->connection->insert_id;
     }
+
 }
 
 $database = new Database();

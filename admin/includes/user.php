@@ -71,4 +71,25 @@ class User
             die("Query Failed " . $this->connection->error);
         }
     }
-}
+
+    public function create()
+    {
+        global $database;
+        $sql = "INSERT INTO users (username,password,first_name,last_name) ";
+        $sql .= "VALUES ('";
+        $sql .= $database->escape_string($this->username) . "','";
+        $sql .= $database->escape_string($this->password) . "','";
+        $sql .= $database->escape_string($this->first_name) . "','";
+        $sql .= $database->escape_string($this->last_name) . "')";
+
+        //    $confirm = new self;
+        //    $confirm->confirm_query($database->query($sql));
+
+        if ($database->query($sql)) {
+            $this->id = $database->insert_id();
+            return true;
+        } else {
+            return false;
+        }
+    }
+} //End user Class
