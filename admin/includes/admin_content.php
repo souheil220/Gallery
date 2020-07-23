@@ -13,17 +13,17 @@
             // $user->password = "123456";   
             // $user->first_name = "Adel";   
             // $user->last_name = "Achour";
-            
             // $user->create();
-            // $user= User::find_user_by_id(3);
-            // $user->username = "adel420";   
-            // $user->password = "123456";   
-            // $user->first_name = "adel";   
-            // $user->last_name = "achour";
+           
+            $user= User::find_user_by_id(4);
+            $user->username = "adel433";   
+            $user->password = "123456";   
+            $user->first_name = "Adel";   
+            $user->last_name = "Achour";
+            $user->update();
 
-            // $user->update();
-            $user= User::find_user_by_id(3);
-            $user->delete();
+            // $user= User::find_user_by_id(3);
+            // $user->delete();
 
 
         ?>
