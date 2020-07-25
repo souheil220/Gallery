@@ -9,22 +9,31 @@
         </h1>
         <?php
             // $user= new User();
-            // $user->username = "adel433";   
+            // $user->username = "amir123";   
             // $user->password = "123456";   
-            // $user->first_name = "Adel";   
-            // $user->last_name = "Achour";
+            // $user->first_name = "Amir";   
+            // $user->last_name = "HH";
             // $user->create();
            
-            $user= User::find_user_by_id(4);
-            $user->username = "adel433";   
-            $user->password = "123456";   
-            $user->first_name = "Adel";   
-            $user->last_name = "Achour";
-            $user->update();
+            // $user= User::find_by_id(4);
+            // $user->username = "amir123";   
+            // $user->password = "123456";   
+            // $user->first_name = "amir";   
+            // $user->last_name = "hh";
+            // $user->update();
 
-            // $user= User::find_user_by_id(3);
+            // $user= User::find_by_id(8);
             // $user->delete();
 
+            // $users = User::find_all();
+            // print_r($users);
+
+            // $photo= Photo::find_by_id(1);
+            // print_r($photo);
+            // $photo = Photo::find_all();
+            // print_r($photo);
+
+            echo INCLUDES_PATH;
 
         ?>
 
