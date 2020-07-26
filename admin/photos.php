@@ -48,7 +48,13 @@ $photos = Photo::find_all();
 
                                 <tr>
                                     <td><?php echo $photo->id ?></td>
-                                    <td><img src="<?php echo $photo->picture_path() ?>" width="auto" height="100px" alt=""></td>
+                                    <td><img src="<?php echo $photo->picture_path() ?>" width="auto" height="100px" alt="">
+                                        <div class="pictures_link">
+                                            <a href="">View</a>
+                                            <a href="">Edit</a>
+                                            <a href="delete_photo.php/?id=<?php echo $photo->id?>">Delete</a>
+                                        </div>           
+                                    </td>
                                     <td><?php echo $photo->file_name ?></td>
                                     <td><?php echo $photo->type ?></td>
                                     <td><?php echo $photo->size ?></td>
