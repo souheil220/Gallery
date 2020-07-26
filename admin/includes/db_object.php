@@ -100,8 +100,6 @@ class Db_object
         foreach ($properties as $key => $value) {
             $property_pairs[] = " {$key}='{$value}'";
         }
-        print_r($properties);
-        print_r($property_pairs);
         $sql = "UPDATE " . static::$db_table . " SET ";
         $sql .= implode(", ", $property_pairs);
         // $sql .= "username = '" . $database->escape_string($this->username) . "',";
