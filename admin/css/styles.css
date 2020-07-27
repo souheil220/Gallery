@@ -2,6 +2,7 @@
 .admin-photo-thumbnail{
     width: 200px;
     border-radius: 5px;
+    align-self: center;
 }
 
 .photo-info-box {
