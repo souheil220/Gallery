@@ -135,6 +135,10 @@ class Db_object
 
         return $database->connection->affected_rows == 1 ? true : die("Error While deleting");
     }
+    public function save_query()
+    {
+        return isset($this->id) ? $this->update() : $this->create();
+    }
 
     public function set_file($file)
     {

@@ -22,8 +22,8 @@
             // $user->last_name = "hh";
             // $user->update();
 
-            $user= User::find_by_id(12);
-            $user->delete();
+            // $user= User::find_by_id(12);
+            // $user->delete();
 
             // $users = User::find_all();
             // print_r($users);
@@ -33,7 +33,7 @@
             // $photo = Photo::find_all();
             // print_r($photo);
 
-            echo INCLUDES_PATH;
+          
 
         ?>
 
