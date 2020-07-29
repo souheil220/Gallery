@@ -9,7 +9,7 @@ class User extends Db_object
     public $first_name;
     public $last_name;
     public $file_name;
-    public $upload_directory = "images";
+    public $upload_directory = "user_images";
     public $image_place_holder = "http://placehold.it/400x400&text=image";
 
     public function image_path_and_placeholder()
