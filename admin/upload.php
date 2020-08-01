@@ -41,7 +41,6 @@ if (!$session->is_signed_in()) {
                 <?php echo $message?>
                 <h1 class="page-header">
                     Upload
-                    <small>Subheading</small>
                 </h1>
                 <div class="col-md-6">
                     <form action="upload.php" method="POST" enctype="multipart/form-data">
