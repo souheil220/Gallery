@@ -29,6 +29,9 @@ $photos = Photo::find_all();
                 <h1 class="page-header">
                     Photos
                 </h1>
+                <p class="bg-success">
+                    <?php echo $message ; ?>
+                </p>
                 <div class="col-md-12">
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -52,7 +55,7 @@ $photos = Photo::find_all();
                                         <div class="pictures_link">
                                             <a href="../photo.php?id=<?php echo $photo->id?>">View</a>
                                             <a href="edit_photo.php?id=<?php echo $photo->id ?>">Edit</a>
-                                            <a href="delete_photo.php?id=<?php echo $photo->id?>">Delete</a>
+                                            <a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id?>">Delete</a>
                                         </div>           
                                     </td>
                                     <td><?php echo $photo->file_name ?></td>

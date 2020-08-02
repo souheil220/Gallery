@@ -29,6 +29,9 @@ $comments = Comments::find_all();
                 <h1 class="page-header">
                     Comments
                 </h1>
+                <p class="bg-success">
+                    <?php echo $message ; ?>
+                </p>
                 <div class="col-md-12">
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -50,7 +53,7 @@ $comments = Comments::find_all();
                                     <td ><?php echo $comment->photo_id ?>
                                         <div class="pictures_link">
                                             <a href="../photo.php?id=<?php echo $comment->photo_id?>">View</a>
-                                            <a href="delete_comment.php?id=<?php echo $comment->id?>">Delete</a>
+                                            <a class="delete_link" href="delete_comment.php?id=<?php echo $comment->id?>">Delete</a>
                                         </div>           
                                     </td>
                                     <td><?php echo $comment->author ?></td>

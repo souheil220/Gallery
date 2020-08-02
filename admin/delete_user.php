@@ -11,6 +11,8 @@ if(isset($_GET['id'])){
      if($user){
           $user->delete_user();
           redirect("users.php");
+          
+          $session->message("The User: {$user->username}  has been deleted");
      } 
     
      

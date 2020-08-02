@@ -15,7 +15,7 @@ class Session
         $this->visitor_count();
     }
 
-    public function message($message = "")
+    public function message($msg = "")
     {
         if (!empty($msg)) {
             $_SESSION['message'] = $msg;
@@ -77,3 +77,4 @@ class Session
 }
 
 $session = new Session();
+$message = $session->message();

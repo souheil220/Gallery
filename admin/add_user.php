@@ -18,7 +18,7 @@ if (isset($_POST['create'])) {
         $user->set_file($_FILES["user_image"]);
 
         if($user->save()){
-            $message = "Photo uploaded successfully";
+            $message = "User Added successfully";
         }else{
             $message = join("<br>",$user->errors);
         }
@@ -26,19 +26,6 @@ if (isset($_POST['create'])) {
 
     }
 }
-
-/*$photo = Photo::find_by_id($_GET['id']);
-    if (isset($_POST['update'])) {
-        $photo->title = $_POST['title'];
-        $photo->caption = $_POST['caption'];
-        $photo->alternate_text = $_POST['alternate_text'];
-        $photo->description = $_POST['description'];
-        $photo->save();
-    }*/
-
-
-
-
 ?>
 
 <!-- Navigation -->
@@ -59,8 +46,7 @@ if (isset($_POST['create'])) {
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Photos
-                    <small>Subheading</small>
+                    Add User
                 </h1>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="col-md-6 col-md-offset-3">

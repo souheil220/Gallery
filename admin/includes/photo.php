@@ -32,4 +32,14 @@ class Photo extends Db_object
             return false;
         }
     }
+
+    public static function display_side_bar($photo_id)
+    {
+        $photo   = Photo::find_by_id($photo_id);
+        $output  = "<a class='thumbnail' href = '#'><img width=100px src='{$photo->picture_path()}'></a>";
+        $output .= "<p>$photo->file_name</p>";
+        $output .= "<p>$photo->type</p>";
+        $output .= "<p>$photo->size</p>";
+        echo $output;
+    }
 }

@@ -2,7 +2,7 @@
 class User extends Db_object
 {
     protected static $db_table = "users";
-    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name','file_name');
+    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name', 'file_name');
     public $id;
     public $username;
     public $password;
@@ -14,7 +14,7 @@ class User extends Db_object
 
     public function image_path_and_placeholder()
     {
-        return empty($this->file_name) ? $this->image_place_holder : $this->upload_directory .DS.$this->file_name;
+        return empty($this->file_name) ? $this->image_place_holder : $this->upload_directory . DS . $this->file_name;
     }
 
     public static function verify_user($username, $password)
@@ -30,7 +30,25 @@ class User extends Db_object
         return !empty($result) ? array_shift($result) : false;
     }
 
-    
+    public function ajax_save_user_image($user_image,$user_id)
+    {
+        global $database;
+        $user_image = $database->escape_string($user_image);
+        $user_id = $database->escape_string($user_id);
+
+        $this->file_name = $user_image;
+        $this->id = $user_id;
+
+        $sql = "UPDATE ".self::$db_table . " SET file_name = '{$this->file_name}' ";
+        $sql.= " WHERE id= {$this->id} ";
+        $update_image = $database->query($sql);
+
+        echo $this->image_path_and_placeholder();
+
+        
+    }
+
+
 
     public function delete_user()
     {
@@ -41,5 +59,4 @@ class User extends Db_object
             return false;
         }
     }
- 
 } //End user Class

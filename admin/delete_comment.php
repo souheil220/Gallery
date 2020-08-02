@@ -10,6 +10,7 @@ if(isset($_GET['id'])){
      $comment = Comments::find_by_id($_GET['id']);
      if($comment){
           $comment->delete();
+          $session->message("The Comment: {$comment->id}  has been deleted");
           redirect("comments.php");
      } 
     

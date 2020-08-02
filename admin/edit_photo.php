@@ -16,6 +16,8 @@ if (isset($_GET['id'])) {
         $photo->alternate_text = $_POST['alternate_text'];
         $photo->description = $_POST['description'];
         $photo->save();
+        $session->message("The Photo: {$photo->id}  has been updated");
+        redirect('photos.php');
     }
 } else {
     redirect('photos.php');
@@ -43,8 +45,7 @@ if (isset($_GET['id'])) {
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Photos
-                    <small>Subheading</small>
+                    Edit Photo
                 </h1>
                 <form action="" method="POST">
                     <div class="col-md-8">
@@ -76,7 +77,7 @@ if (isset($_GET['id'])) {
                             <div class="info-box-header">
                                 <h4>Save <span id="toggle" class="glyphicon glyphicon-menu-up pull-right"></span></h4>
                             </div>
-                            <div class="inside">
+                            <div class="inside" id="inside">
                                 <div class="box-inner">
                                     <p class="text">
                                         <span class="glyphicon glyphicon-calendar"></span> Uploaded on: April 22, 2030 @ 5:26
@@ -96,7 +97,7 @@ if (isset($_GET['id'])) {
                                 </div>
                                 <div class="info-box-footer clearfix">
                                     <div class="info-box-delete pull-left">
-                                        <a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger btn-lg ">Delete</a>
+                                        <a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger btn-lg ">Delete</a>
                                     </div>
                                     <div class="info-box-update pull-right ">
                                         <input type="submit" name="update" value="Update" class="btn btn-primary btn-lg ">

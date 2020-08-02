@@ -11,6 +11,7 @@ if(isset($_GET['id'])){
      if($photo){
           $photo->delete_photo();
           redirect("photos.php");
+          $session->message("The Photo: {$photo->id}  has been deleted");
      } 
     
      
